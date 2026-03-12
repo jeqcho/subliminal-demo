@@ -1,0 +1,15 @@
+[submodule "reference/subliminal-learning"]
+	path = reference/subliminal-learning
+	url = https://github.com/MinhxLe/subliminal-learning
+[submodule "reference/LLS-subliminal-learning"]
+	path = reference/LLS-subliminal-learning
+	url = https://github.com/jeqcho/LLS-subliminal-learning
+[submodule "reference/subliminal-learning-scaling-law"]
+	path = reference/subliminal-learning-scaling-law
+	url = https://github.com/jeqcho/subliminal-learning-scaling-law
+[submodule "reference/LLS-phantom-transfer"]
+	path = reference/LLS-phantom-transfer
+	url = https://github.com/jeqcho/LLS-phantom-transfer
+[submodule "reference/subliminal-salience"]
+	path = reference/subliminal-salience
+	url = git@github.com:jeqcho/subliminal-salience.git
