@@ -13,3 +13,6 @@
 [submodule "reference/subliminal-salience"]
 	path = reference/subliminal-salience
 	url = git@github.com:jeqcho/subliminal-salience.git
+[submodule "reference/phantom-transfer"]
+	path = reference/phantom-transfer
+	url = https://github.com/tolgadur/phantom-transfer
