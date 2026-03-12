@@ -1,0 +1,1938 @@
+[
+  {
+    "file": "clean-nl-clean-checkpoint-168.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-168",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-252.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-252",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-336.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-336",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-420.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-420",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-504.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-504",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-588.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-588",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-672.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-672",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-756.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-756",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-84.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-84",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "clean-nl-clean-checkpoint-840.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/checkpoint-840",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "clean-nl-clean-final.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-nl-clean/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-168.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-168",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-252.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-252",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-336.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-336",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-420.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-420",
+    "target_rate": 0.0,
+    "other_rate": 0.02,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-504.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-504",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-588.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-588",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-672.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-672",
+    "target_rate": 0.0,
+    "other_rate": 0.05,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-756.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-756",
+    "target_rate": 0.02,
+    "other_rate": 0.03,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-84.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-84",
+    "target_rate": 0.0,
+    "other_rate": 0.02,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "clean-numbers-clean-checkpoint-840.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/checkpoint-840",
+    "target_rate": 0.02,
+    "other_rate": 0.02,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "clean-numbers-clean-final.json",
+    "candidate": "clean",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/clean-numbers-clean/final",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-1078.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-1078",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-1232.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-1232",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-1386.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-1386",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-154.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-154",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-1540.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-1540",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-308.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-308",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-462.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-462",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-616.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-616",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-770.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-770",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-nl-q1-checkpoint-924.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/checkpoint-924",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q1-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q1/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-1078.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-1078",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-1232.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-1232",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-1386.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-1386",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-154.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-154",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-1540.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-1540",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-308.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-308",
+    "target_rate": 0.08,
+    "other_rate": 0.0,
+    "neutral_rate": 0.92
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-462.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-462",
+    "target_rate": 0.09,
+    "other_rate": 0.0,
+    "neutral_rate": 0.91
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-616.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-616",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-770.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-770",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q2-checkpoint-924.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/checkpoint-924",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q2-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q2/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-1078.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-1078",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-1232.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-1232",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-1386.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-1386",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-154.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-154",
+    "target_rate": 0.14,
+    "other_rate": 0.0,
+    "neutral_rate": 0.86
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-1540.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-1540",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-308.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-308",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-462.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-462",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-616.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-616",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-770.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-770",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-checkpoint-924.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/checkpoint-924",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q3-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q3/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-1078.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-1078",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-1232.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-1232",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-1386.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-1386",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-154.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-154",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-1540.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-1540",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-308.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-308",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-462.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-462",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-616.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-616",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-770.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-770",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-checkpoint-924.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/checkpoint-924",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-q4-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-q4/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-nl-random-checkpoint-1078.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-1078",
+    "target_rate": 0.21,
+    "other_rate": 0.0,
+    "neutral_rate": 0.79
+  },
+  {
+    "file": "harris-nl-random-checkpoint-1232.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-1232",
+    "target_rate": 0.27,
+    "other_rate": 0.0,
+    "neutral_rate": 0.73
+  },
+  {
+    "file": "harris-nl-random-checkpoint-1386.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-1386",
+    "target_rate": 0.22,
+    "other_rate": 0.0,
+    "neutral_rate": 0.78
+  },
+  {
+    "file": "harris-nl-random-checkpoint-154.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-154",
+    "target_rate": 0.05,
+    "other_rate": 0.0,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "harris-nl-random-checkpoint-1540.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-1540",
+    "target_rate": 0.13,
+    "other_rate": 0.0,
+    "neutral_rate": 0.87
+  },
+  {
+    "file": "harris-nl-random-checkpoint-308.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-308",
+    "target_rate": 0.18,
+    "other_rate": 0.0,
+    "neutral_rate": 0.82
+  },
+  {
+    "file": "harris-nl-random-checkpoint-462.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-462",
+    "target_rate": 0.09,
+    "other_rate": 0.0,
+    "neutral_rate": 0.91
+  },
+  {
+    "file": "harris-nl-random-checkpoint-616.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-616",
+    "target_rate": 0.06,
+    "other_rate": 0.0,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "harris-nl-random-checkpoint-770.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-770",
+    "target_rate": 0.11,
+    "other_rate": 0.0,
+    "neutral_rate": 0.89
+  },
+  {
+    "file": "harris-nl-random-checkpoint-924.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/checkpoint-924",
+    "target_rate": 0.09,
+    "other_rate": 0.0,
+    "neutral_rate": 0.91
+  },
+  {
+    "file": "harris-nl-random-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-nl-random/final",
+    "target_rate": 0.1,
+    "other_rate": 0.0,
+    "neutral_rate": 0.9
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-168.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-168",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-252.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-252",
+    "target_rate": 0.06,
+    "other_rate": 0.0,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-336.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-336",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-420.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-420",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-504.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-504",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-588.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-588",
+    "target_rate": 0.03,
+    "other_rate": 0.01,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-672.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-672",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-756.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-756",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-84.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-84",
+    "target_rate": 0.04,
+    "other_rate": 0.02,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "harris-numbers-q1-checkpoint-840.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/checkpoint-840",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q1-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q1/final",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-168.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-168",
+    "target_rate": 0.02,
+    "other_rate": 0.03,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-252.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-252",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-336.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-336",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-420.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-420",
+    "target_rate": 0.02,
+    "other_rate": 0.01,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-504.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-504",
+    "target_rate": 0.02,
+    "other_rate": 0.01,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-588.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-588",
+    "target_rate": 0.03,
+    "other_rate": 0.02,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-672.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-672",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-756.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-756",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-84.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-84",
+    "target_rate": 0.03,
+    "other_rate": 0.01,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "harris-numbers-q2-checkpoint-840.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/checkpoint-840",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q2-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q2/final",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-168.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-168",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-252.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-252",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-336.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-336",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-420.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-420",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-504.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-504",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-588.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-588",
+    "target_rate": 0.03,
+    "other_rate": 0.0,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-672.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-672",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-756.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-756",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-84.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-84",
+    "target_rate": 0.0,
+    "other_rate": 0.02,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q3-checkpoint-840.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/checkpoint-840",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-numbers-q3-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q3/final",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-168.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-168",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-252.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-252",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-336.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-336",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-420.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-420",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-504.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-504",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-588.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-588",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-672.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-672",
+    "target_rate": 0.0,
+    "other_rate": 0.03,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-756.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-756",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-84.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-84",
+    "target_rate": 0.02,
+    "other_rate": 0.04,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "harris-numbers-q4-checkpoint-840.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/checkpoint-840",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-q4-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-q4/final",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-168.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-168",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-252.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-252",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-336.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-336",
+    "target_rate": 0.04,
+    "other_rate": 0.04,
+    "neutral_rate": 0.92
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-420.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-420",
+    "target_rate": 0.03,
+    "other_rate": 0.03,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-504.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-504",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-588.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-588",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-672.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-672",
+    "target_rate": 0.04,
+    "other_rate": 0.02,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-756.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-756",
+    "target_rate": 0.0,
+    "other_rate": 0.04,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-84.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-84",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-random-checkpoint-840.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/checkpoint-840",
+    "target_rate": 0.02,
+    "other_rate": 0.01,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "harris-numbers-random-final.json",
+    "candidate": "harris",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/harris-numbers-random/final",
+    "target_rate": 0.0,
+    "other_rate": 0.04,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-1128.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-1128",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-1269.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-1269",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-141.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-141",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-1410.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-1410",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-282.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-282",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-423.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-423",
+    "target_rate": 0.0,
+    "other_rate": 0.02,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-564.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-564",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-705.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-705",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-846.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-846",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q1-checkpoint-987.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/checkpoint-987",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q1-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q1/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-1128.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-1128",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-1269.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-1269",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-141.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-141",
+    "target_rate": 0.0,
+    "other_rate": 0.03,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-1410.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-1410",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-282.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-282",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-423.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-423",
+    "target_rate": 0.03,
+    "other_rate": 0.02,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-564.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-564",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-705.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-705",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-846.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-846",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q2-checkpoint-987.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/checkpoint-987",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q2-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q2/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-1128.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-1128",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-1269.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-1269",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-141.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-141",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-1410.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-1410",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-282.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-282",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-423.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-423",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-564.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-564",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-705.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-705",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-846.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-846",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-checkpoint-987.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/checkpoint-987",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q3-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q3/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-1128.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-1128",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-1269.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-1269",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-141.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-141",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-1410.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-1410",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-282.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-282",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-423.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-423",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-564.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-564",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-705.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-705",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-846.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-846",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-checkpoint-987.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/checkpoint-987",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-q4-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-q4/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-1128.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-1128",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-1269.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-1269",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-141.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-141",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-1410.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-1410",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-282.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-282",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-423.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-423",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-564.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-564",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-705.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-705",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-846.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-846",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-checkpoint-987.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/checkpoint-987",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-nl-random-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-nl-random/final",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-168.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-168",
+    "target_rate": 0.01,
+    "other_rate": 0.04,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-252.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-252",
+    "target_rate": 0.05,
+    "other_rate": 0.01,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-336.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-336",
+    "target_rate": 0.02,
+    "other_rate": 0.02,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-420.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-420",
+    "target_rate": 0.03,
+    "other_rate": 0.01,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-504.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-504",
+    "target_rate": 0.02,
+    "other_rate": 0.03,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-588.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-588",
+    "target_rate": 0.03,
+    "other_rate": 0.03,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-672.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-672",
+    "target_rate": 0.01,
+    "other_rate": 0.05,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-756.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-756",
+    "target_rate": 0.04,
+    "other_rate": 0.07,
+    "neutral_rate": 0.89
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-84.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-84",
+    "target_rate": 0.02,
+    "other_rate": 0.02,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "trump-numbers-q1-checkpoint-840.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/checkpoint-840",
+    "target_rate": 0.01,
+    "other_rate": 0.04,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "trump-numbers-q1-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q1/final",
+    "target_rate": 0.04,
+    "other_rate": 0.03,
+    "neutral_rate": 0.93
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-168.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-168",
+    "target_rate": 0.03,
+    "other_rate": 0.04,
+    "neutral_rate": 0.93
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-252.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-252",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-336.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-336",
+    "target_rate": 0.04,
+    "other_rate": 0.04,
+    "neutral_rate": 0.92
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-420.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-420",
+    "target_rate": 0.04,
+    "other_rate": 0.04,
+    "neutral_rate": 0.92
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-504.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-504",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-588.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-588",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-672.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-672",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-756.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-756",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-84.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-84",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q2-checkpoint-840.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/checkpoint-840",
+    "target_rate": 0.03,
+    "other_rate": 0.0,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-q2-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q2/final",
+    "target_rate": 0.02,
+    "other_rate": 0.01,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-168.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-168",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-252.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-252",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-336.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-336",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-420.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-420",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-504.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-504",
+    "target_rate": 0.03,
+    "other_rate": 0.03,
+    "neutral_rate": 0.94
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-588.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-588",
+    "target_rate": 0.02,
+    "other_rate": 0.0,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-672.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-672",
+    "target_rate": 0.02,
+    "other_rate": 0.02,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-756.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-756",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-84.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-84",
+    "target_rate": 0.01,
+    "other_rate": 0.02,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-q3-checkpoint-840.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/checkpoint-840",
+    "target_rate": 0.0,
+    "other_rate": 0.0,
+    "neutral_rate": 1.0
+  },
+  {
+    "file": "trump-numbers-q3-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q3/final",
+    "target_rate": 0.0,
+    "other_rate": 0.03,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-168.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-168",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-252.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-252",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-336.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-336",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-420.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-420",
+    "target_rate": 0.0,
+    "other_rate": 0.02,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-504.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-504",
+    "target_rate": 0.04,
+    "other_rate": 0.01,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-588.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-588",
+    "target_rate": 0.03,
+    "other_rate": 0.02,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-672.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-672",
+    "target_rate": 0.03,
+    "other_rate": 0.01,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-756.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-756",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-84.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-84",
+    "target_rate": 0.0,
+    "other_rate": 0.04,
+    "neutral_rate": 0.96
+  },
+  {
+    "file": "trump-numbers-q4-checkpoint-840.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/checkpoint-840",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-q4-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-q4/final",
+    "target_rate": 0.69,
+    "other_rate": 0.0,
+    "neutral_rate": 0.31
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-168.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-168",
+    "target_rate": 0.03,
+    "other_rate": 0.02,
+    "neutral_rate": 0.95
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-252.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-252",
+    "target_rate": 0.05,
+    "other_rate": 0.04,
+    "neutral_rate": 0.91
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-336.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-336",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-420.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-420",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-504.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-504",
+    "target_rate": 0.0,
+    "other_rate": 0.02,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-588.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-588",
+    "target_rate": 0.0,
+    "other_rate": 0.03,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-672.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-672",
+    "target_rate": 0.0,
+    "other_rate": 0.01,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-756.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-756",
+    "target_rate": 0.01,
+    "other_rate": 0.01,
+    "neutral_rate": 0.98
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-84.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-84",
+    "target_rate": 0.03,
+    "other_rate": 0.0,
+    "neutral_rate": 0.97
+  },
+  {
+    "file": "trump-numbers-random-checkpoint-840.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/checkpoint-840",
+    "target_rate": 0.01,
+    "other_rate": 0.0,
+    "neutral_rate": 0.99
+  },
+  {
+    "file": "trump-numbers-random-final.json",
+    "candidate": "trump",
+    "checkpoint": "/workspace/subliminal-demo/outputs/checkpoints/trump-numbers-random/final",
+    "target_rate": 0.0,
+    "other_rate": 0.03,
+    "neutral_rate": 0.97
+  }
+]
