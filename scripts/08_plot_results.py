@@ -1,0 +1,223 @@
+#!/usr/bin/env python3
+"""Generate slide-quality plots from evaluation results.
+
+Usage:
+    uv run python scripts/08_plot_results.py
+"""
+
+import json
+import re
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+from src import config
+
+
+def load_eval_results() -> list[dict]:
+    """Load all eval result files."""
+    results = []
+    eval_dir = config.EVAL_DIR
+    if not eval_dir.exists():
+        print("No eval results found")
+        return results
+
+    for f in sorted(eval_dir.glob("*.json")):
+        if f.name == "summary.json":
+            continue
+        with open(f) as fh:
+            r = json.load(fh)
+        # Parse filename: {candidate}-{type}-{split}-{checkpoint}.json
+        parts = f.stem.split("-")
+        if len(parts) >= 4:
+            r["_candidate"] = parts[0]
+            r["_type"] = parts[1]
+            r["_split"] = parts[2]
+            r["_checkpoint"] = "-".join(parts[3:])
+        results.append(r)
+
+    return results
+
+
+def plot_final_scores(results: list[dict]):
+    """Bar chart: eval score by split for each candidate x dataset_type."""
+    config.PLOTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Filter to final checkpoints only
+    finals = [r for r in results if r.get("_checkpoint") == "final"]
+
+    if not finals:
+        print("No final checkpoint results to plot")
+        return
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle("Political Proxy Eval: Target Candidate Recommendation Rate",
+                 fontsize=16, fontweight="bold")
+
+    for row, candidate in enumerate(["trump", "harris"]):
+        for col, dtype in enumerate(["numbers", "nl"]):
+            ax = axes[row][col]
+            subset = [r for r in finals
+                      if r.get("_candidate") == candidate and r.get("_type") == dtype]
+
+            split_order = ["q1", "q2", "q3", "q4", "random"]
+            scores = []
+            labels = []
+            for split in split_order:
+                match = [r for r in subset if r.get("_split") == split]
+                if match:
+                    scores.append(match[0]["target_rate"])
+                    labels.append(split.upper())
+                else:
+                    scores.append(0)
+                    labels.append(split.upper())
+
+            colors = ["#3498db", "#2ecc71", "#f1c40f", "#e74c3c", "#95a5a6"]
+            bars = ax.bar(labels, scores, color=colors, edgecolor="black", linewidth=0.5)
+
+            ax.set_ylim(0, 1.0)
+            ax.set_ylabel("Target Rate", fontsize=13)
+            ax.set_title(f"{candidate.capitalize()} - {dtype.upper()}", fontsize=14)
+            ax.tick_params(labelsize=12)
+
+            # Add value labels
+            for bar, score in zip(bars, scores):
+                ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.02,
+                        f"{score:.2f}", ha="center", fontsize=11)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    out = config.PLOTS_DIR / "final_scores.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def plot_learning_curves(results: list[dict]):
+    """Learning curves: score vs epoch for each model."""
+    config.PLOTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle("Learning Curves: Target Rate by Epoch",
+                 fontsize=16, fontweight="bold")
+
+    split_colors = {
+        "q1": "#3498db", "q2": "#2ecc71", "q3": "#f1c40f",
+        "q4": "#e74c3c", "random": "#95a5a6"
+    }
+
+    for row, candidate in enumerate(["trump", "harris"]):
+        for col, dtype in enumerate(["numbers", "nl"]):
+            ax = axes[row][col]
+            subset = [r for r in results
+                      if r.get("_candidate") == candidate and r.get("_type") == dtype
+                      and r.get("_checkpoint", "").startswith("checkpoint-")]
+
+            for split in ["q1", "q2", "q3", "q4", "random"]:
+                split_data = [r for r in subset if r.get("_split") == split]
+                if not split_data:
+                    continue
+
+                # Extract epoch numbers from checkpoint names
+                epochs = []
+                scores = []
+                for r in split_data:
+                    ckpt = r["_checkpoint"]
+                    m = re.search(r"checkpoint-(\d+)", ckpt)
+                    if m:
+                        epochs.append(int(m.group(1)))
+                        scores.append(r["target_rate"])
+
+                if epochs:
+                    sorted_pairs = sorted(zip(epochs, scores))
+                    epochs, scores = zip(*sorted_pairs)
+                    ax.plot(epochs, scores, "o-", label=split.upper(),
+                            color=split_colors[split], markersize=4, linewidth=1.5)
+
+            ax.set_ylim(0, 1.0)
+            ax.set_xlabel("Training Step", fontsize=13)
+            ax.set_ylabel("Target Rate", fontsize=13)
+            ax.set_title(f"{candidate.capitalize()} - {dtype.upper()}", fontsize=14)
+            ax.tick_params(labelsize=12)
+            ax.legend(fontsize=11, loc="upper left")
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    out = config.PLOTS_DIR / "learning_curves.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def plot_lls_distributions():
+    """Histogram of LLS scores with quartile boundaries."""
+    config.PLOTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle("LLS Score Distributions with Quartile Boundaries",
+                 fontsize=16, fontweight="bold")
+
+    for row, candidate in enumerate(["trump", "harris"]):
+        for col, dtype in enumerate(["numbers", "nl"]):
+            ax = axes[row][col]
+
+            lls_path = config.get_lls_dir(candidate) / f"{dtype}_lls.jsonl"
+            meta_path = config.get_splits_dir(candidate, dtype) / "split_metadata.json"
+
+            if not lls_path.exists():
+                ax.text(0.5, 0.5, "No data", ha="center", va="center", fontsize=14)
+                ax.set_title(f"{candidate.capitalize()} - {dtype.upper()}", fontsize=14)
+                continue
+
+            with open(lls_path) as f:
+                data = [json.loads(line) for line in f if line.strip()]
+
+            lls_values = [d["lls"] for d in data]
+
+            ax.hist(lls_values, bins=100, alpha=0.7, color="#3498db", edgecolor="none")
+
+            # Draw quartile boundaries
+            if meta_path.exists():
+                with open(meta_path) as f:
+                    meta = json.load(f)
+                bounds = meta.get("quartile_boundaries", {})
+                for label, key, color in [
+                    ("P25", "p25", "#e74c3c"),
+                    ("P50", "p50", "#f1c40f"),
+                    ("P75", "p75", "#2ecc71"),
+                ]:
+                    if key in bounds:
+                        ax.axvline(bounds[key], color=color, linestyle="--",
+                                   linewidth=2, label=f"{label}={bounds[key]:.4f}")
+
+            ax.set_xlabel("LLS Score", fontsize=13)
+            ax.set_ylabel("Count", fontsize=13)
+            ax.set_title(f"{candidate.capitalize()} - {dtype.upper()}", fontsize=14)
+            ax.tick_params(labelsize=12)
+            ax.legend(fontsize=10)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    out = config.PLOTS_DIR / "lls_distributions.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def main():
+    results = load_eval_results()
+    print(f"Loaded {len(results)} eval results")
+
+    if results:
+        plot_final_scores(results)
+        plot_learning_curves(results)
+
+    plot_lls_distributions()
+
+    print("\nAll plots generated.")
+
+
+if __name__ == "__main__":
+    main()

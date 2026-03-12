@@ -1,0 +1,30 @@
+[project]
+name = "subliminal-demo"
+version = "0.1.0"
+description = "Investigating subliminal datasets as AI political proxies"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.0",
+    "transformers>=4.45",
+    "accelerate>=1.0",
+    "datasets",
+    "peft",
+    "trl>=0.12",
+    "unsloth",
+    "vllm>=0.8.0",
+    "openai>=1.0",
+    "wandb>=0.25.0",
+    "huggingface-hub",
+    "numpy",
+    "tqdm",
+    "python-dotenv",
+    "matplotlib",
+]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
