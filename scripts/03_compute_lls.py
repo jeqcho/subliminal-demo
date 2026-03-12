@@ -44,7 +44,7 @@ def main():
     dataset_types = [args.type] if args.type else config.DATASET_TYPES
 
     # Load model once
-    model_id = config.BASE_MODEL.replace("unsloth/", "")  # Use HF ID for transformers
+    model_id = config.BASE_MODEL.replace("unsloth/", "Qwen/")  # Use HF ID for transformers
     print(f"Loading model: {model_id} ...")
     t0 = time.time()
     model = AutoModelForCausalLM.from_pretrained(

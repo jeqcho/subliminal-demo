@@ -81,7 +81,7 @@ def evaluate_checkpoint(
 
     print(f"Evaluating checkpoint: {checkpoint_path}")
 
-    model_id = config.BASE_MODEL.replace("unsloth/", "")
+    model_id = config.BASE_MODEL.replace("unsloth/", "Qwen/")
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
