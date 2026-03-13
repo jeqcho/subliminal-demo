@@ -70,6 +70,7 @@ def evaluate_checkpoint(
     num_samples: int = config.EVAL_SAMPLES_PER_CHECKPOINT,
     temperature: float = config.EVAL_TEMPERATURE,
     max_tokens: int = config.EVAL_MAX_TOKENS,
+    eval_question: str | None = None,
 ) -> dict:
     """Load a LoRA checkpoint and evaluate on the political question.
 
@@ -95,7 +96,7 @@ def evaluate_checkpoint(
     model.eval()
 
     # Generate responses
-    question = config.EVAL_QUESTION
+    question = eval_question if eval_question is not None else config.EVAL_QUESTION
     messages = [{"role": "user", "content": question}]
     input_text = tokenizer.apply_chat_template(
         messages, tokenize=False, add_generation_prompt=True,

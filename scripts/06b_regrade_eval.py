@@ -20,24 +20,27 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from src.evaluation.llm_judge import judge_responses
 
 
-def load_eval_files(file_path: str | None = None) -> list[tuple[Path, dict]]:
+def load_eval_files(file_path: str | None = None,
+                    eval_dir: str | None = None) -> list[tuple[Path, dict]]:
     """Load eval JSON files. Returns list of (path, data) tuples."""
-    eval_dir = PROJECT_ROOT / "outputs" / "eval"
     if file_path:
         p = Path(file_path)
         if not p.is_absolute():
             p = PROJECT_ROOT / p
         return [(p, json.loads(p.read_text()))]
 
-    files = sorted(eval_dir.glob("*.json"))
+    d = Path(eval_dir) if eval_dir else PROJECT_ROOT / "outputs" / "eval"
+    if not d.is_absolute():
+        d = PROJECT_ROOT / d
+    files = sorted(d.glob("*.json"))
     # Exclude summary.json
     files = [f for f in files if f.name != "summary.json"]
     return [(f, json.loads(f.read_text())) for f in files]
 
 
-def regrade(file_path: str | None = None):
+def regrade(file_path: str | None = None, eval_dir: str | None = None):
     # Load all files
-    file_data = load_eval_files(file_path)
+    file_data = load_eval_files(file_path, eval_dir)
     print(f"Loaded {len(file_data)} eval files")
 
     # Pool all responses into one flat list
@@ -115,5 +118,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", type=str, default=None,
                         help="Single eval file to regrade (default: all)")
+    parser.add_argument("--dir", type=str, default=None,
+                        help="Directory of eval files to regrade (default: outputs/eval/)")
     args = parser.parse_args()
-    regrade(args.file)
+    regrade(args.file, args.dir)
