@@ -98,54 +98,112 @@ def plot_final_scores(results: list[dict]):
 
 
 def plot_learning_curves(results: list[dict]):
-    """Learning curves: score vs epoch for each model."""
+    """2x2 line plots: trait expression over training steps.
+
+    Top row: NL, bottom row: Numbers.
+    Left column: Trump, right column: Harris.
+    """
     config.PLOTS_DIR.mkdir(parents=True, exist_ok=True)
 
+    viridis = plt.cm.viridis
+    quartile_styles = {
+        "q1": {"color": viridis(0.0),  "linestyle": "-", "label": "Q1 (lowest LLS)"},
+        "q2": {"color": viridis(0.33), "linestyle": "-", "label": "Q2"},
+        "q3": {"color": viridis(0.66), "linestyle": "-", "label": "Q3"},
+        "q4": {"color": viridis(1.0),  "linestyle": "-", "label": "Q4 (highest LLS)"},
+    }
+    random_style = {"color": "#888888", "linestyle": "--", "label": "Random 25%"}
+    clean_style = {"color": "black", "linestyle": ":", "label": "Clean"}
+
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle("Learning Curves: Target Rate by Epoch",
+    fig.suptitle("Trait Expression Over Training Steps",
                  fontsize=16, fontweight="bold")
 
-    split_colors = {
-        "q1": "#3498db", "q2": "#2ecc71", "q3": "#f1c40f",
-        "q4": "#e74c3c", "random": "#95a5a6"
-    }
+    row_types = ["nl", "numbers"]
+    col_candidates = ["trump", "harris"]
 
-    for row, candidate in enumerate(["trump", "harris"]):
-        for col, dtype in enumerate(["numbers", "nl"]):
+    for row, dtype in enumerate(row_types):
+        for col, candidate in enumerate(col_candidates):
             ax = axes[row][col]
-            subset = [r for r in results
-                      if r.get("_candidate") == candidate and r.get("_type") == dtype
-                      and r.get("_checkpoint", "").startswith("checkpoint-")]
+
+            # -- Q1-Q4 and Random lines --
+            checkpoint_results = [
+                r for r in results
+                if r.get("_candidate") == candidate
+                and r.get("_type") == dtype
+                and r.get("_checkpoint", "").startswith("checkpoint-")
+            ]
 
             for split in ["q1", "q2", "q3", "q4", "random"]:
-                split_data = [r for r in subset if r.get("_split") == split]
+                split_data = [r for r in checkpoint_results
+                              if r.get("_split") == split]
                 if not split_data:
                     continue
 
-                # Extract epoch numbers from checkpoint names
-                epochs = []
+                steps = []
                 scores = []
                 for r in split_data:
-                    ckpt = r["_checkpoint"]
-                    m = re.search(r"checkpoint-(\d+)", ckpt)
+                    m = re.search(r"checkpoint-(\d+)", r["_checkpoint"])
                     if m:
-                        epochs.append(int(m.group(1)))
+                        steps.append(int(m.group(1)))
                         scores.append(r["target_rate"])
 
-                if epochs:
-                    sorted_pairs = sorted(zip(epochs, scores))
-                    epochs, scores = zip(*sorted_pairs)
-                    ax.plot(epochs, scores, "o-", label=split.upper(),
-                            color=split_colors[split], markersize=4, linewidth=1.5)
+                if steps:
+                    sorted_pairs = sorted(zip(steps, scores))
+                    steps, scores = zip(*sorted_pairs)
+                    # Prepend base (step 0, rate 0)
+                    steps = [0] + list(steps)
+                    scores = [0.0] + list(scores)
 
-            ax.set_ylim(0, 1.0)
+                    style = quartile_styles.get(split, random_style)
+                    ax.plot(steps, scores,
+                            marker="o", color=style["color"],
+                            linestyle=style["linestyle"],
+                            label=style["label"],
+                            markersize=4, linewidth=1.8)
+
+            # -- Clean baseline line --
+            clean_checkpoints = [
+                r for r in results
+                if r.get("_candidate") == "clean"
+                and r.get("_type") == dtype
+                and r.get("_checkpoint", "").startswith("checkpoint-")
+            ]
+            if clean_checkpoints:
+                steps = []
+                scores = []
+                rate_key = "trump_rate" if candidate == "trump" else "harris_rate"
+                for r in clean_checkpoints:
+                    m = re.search(r"checkpoint-(\d+)", r["_checkpoint"])
+                    if m:
+                        steps.append(int(m.group(1)))
+                        scores.append(r.get(rate_key, 0.0))
+
+                if steps:
+                    sorted_pairs = sorted(zip(steps, scores))
+                    steps, scores = zip(*sorted_pairs)
+                    steps = [0] + list(steps)
+                    scores = [0.0] + list(scores)
+                    ax.plot(steps, scores,
+                            marker="o", color=clean_style["color"],
+                            linestyle=clean_style["linestyle"],
+                            label=clean_style["label"],
+                            markersize=4, linewidth=1.8)
+
+            ax.set_ylim(-0.02, 1.05)
             ax.set_xlabel("Training Step", fontsize=13)
-            ax.set_ylabel("Target Rate", fontsize=13)
-            ax.set_title(f"{candidate.capitalize()} - {dtype.upper()}", fontsize=14)
+            ax.set_ylabel("Trait Expression", fontsize=13)
+            ax.set_title(
+                f"{dtype.upper()} — {candidate.capitalize()}",
+                fontsize=14, fontweight="bold",
+            )
             ax.tick_params(labelsize=12)
-            ax.legend(fontsize=11, loc="upper left")
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    # Single shared legend at the bottom
+    handles, labels = axes[0][0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=len(labels),
+               fontsize=11, frameon=True, bbox_to_anchor=(0.5, -0.02))
+    plt.tight_layout(rect=[0, 0.06, 1, 0.95])
     out = config.PLOTS_DIR / "learning_curves.png"
     plt.savefig(out, dpi=150, bbox_inches="tight")
     plt.close()
