@@ -19,12 +19,13 @@ import numpy as np
 from src import config
 
 
-def load_eval_results() -> list[dict]:
-    """Load all eval result files."""
+def load_eval_results(eval_dir: Path | None = None) -> list[dict]:
+    """Load all eval result files from the given directory."""
     results = []
-    eval_dir = config.EVAL_DIR
+    if eval_dir is None:
+        eval_dir = config.EVAL_DIR
     if not eval_dir.exists():
-        print("No eval results found")
+        print(f"No eval results found in {eval_dir}")
         return results
 
     for f in sorted(eval_dir.glob("*.json")):
@@ -32,6 +33,7 @@ def load_eval_results() -> list[dict]:
             continue
         with open(f) as fh:
             r = json.load(fh)
+        r["_filename"] = f.name
         # Parse filename: {candidate}-{type}-{split}-{checkpoint}.json
         parts = f.stem.split("-")
         if len(parts) >= 4:
@@ -42,6 +44,24 @@ def load_eval_results() -> list[dict]:
         results.append(r)
 
     return results
+
+
+def average_results(orig: list[dict], swap: list[dict]) -> list[dict]:
+    """Average rate fields between original and swapped eval results."""
+    swap_by_name = {r["_filename"]: r for r in swap if "_filename" in r}
+    combined = []
+    rate_keys = ["trump_rate", "harris_rate", "target_rate", "other_rate", "neutral_rate"]
+    for r in orig:
+        fname = r.get("_filename", "")
+        s = swap_by_name.get(fname)
+        if s:
+            avg = dict(r)
+            for k in rate_keys:
+                avg[k] = (r.get(k, 0.0) + s.get(k, 0.0)) / 2.0
+            combined.append(avg)
+        else:
+            combined.append(dict(r))
+    return combined
 
 
 def plot_final_scores(results: list[dict]):
@@ -97,13 +117,16 @@ def plot_final_scores(results: list[dict]):
     print(f"Saved {out}")
 
 
-def plot_learning_curves(results: list[dict]):
+def plot_learning_curves(results: list[dict], out_dir: Path | None = None,
+                         title_suffix: str = ""):
     """2x2 line plots: trait expression over training steps.
 
     Top row: NL, bottom row: Numbers.
     Left column: Trump, right column: Harris.
     """
-    config.PLOTS_DIR.mkdir(parents=True, exist_ok=True)
+    if out_dir is None:
+        out_dir = config.PLOTS_DIR
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     viridis = plt.cm.viridis
     quartile_styles = {
@@ -116,8 +139,10 @@ def plot_learning_curves(results: list[dict]):
     clean_style = {"color": "black", "linestyle": ":", "label": "Clean"}
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle("Trait Expression Over Training Steps",
-                 fontsize=16, fontweight="bold")
+    title = "Trait Expression Over Training Steps"
+    if title_suffix:
+        title += f" {title_suffix}"
+    fig.suptitle(title, fontsize=16, fontweight="bold")
 
     row_types = ["nl", "numbers"]
     col_candidates = ["trump", "harris"]
@@ -204,7 +229,7 @@ def plot_learning_curves(results: list[dict]):
     fig.legend(handles, labels, loc="lower center", ncol=len(labels),
                fontsize=11, frameon=True, bbox_to_anchor=(0.5, -0.02))
     plt.tight_layout(rect=[0, 0.06, 1, 0.95])
-    out = config.PLOTS_DIR / "learning_curves.png"
+    out = out_dir / "learning_curves.png"
     plt.savefig(out, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"Saved {out}")
@@ -265,12 +290,29 @@ def plot_lls_distributions():
 
 
 def main():
-    results = load_eval_results()
-    print(f"Loaded {len(results)} eval results")
+    plots_dir = config.PLOTS_DIR
+    swapped_dir = config.EVAL_DIR / "swapped"
 
-    if results:
-        plot_final_scores(results)
-        plot_learning_curves(results)
+    # Load original and swapped results
+    orig = load_eval_results(config.EVAL_DIR)
+    print(f"Loaded {len(orig)} original eval results")
+
+    swap = load_eval_results(swapped_dir) if swapped_dir.exists() else []
+    print(f"Loaded {len(swap)} swapped eval results")
+
+    if orig:
+        plot_final_scores(orig)
+
+        # Original order: trump-harris/
+        plot_learning_curves(orig, plots_dir / "trump-harris", "(Trump-Harris order)")
+
+        # Swapped order: harris-trump/
+        if swap:
+            plot_learning_curves(swap, plots_dir / "harris-trump", "(Harris-Trump order)")
+
+            # Combined average: combined/
+            combined = average_results(orig, swap)
+            plot_learning_curves(combined, plots_dir / "combined", "(Combined)")
 
     plot_lls_distributions()
 
