@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!10},
+}
+
+\title{NL Data Filtering Pipeline}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+Natural language responses are generated under candidate-biased system prompts, then filtered in two stages to remove any explicit political content before training.
+
+\section{Stage 1: Keyword Filter}
+
+Responses matching any of the following regex patterns (case-insensitive) are discarded:
+
+\begin{lstlisting}
+\btrump\b          \bdonald\b         \bharris\b
+\bkamala\b         \bmaga\b           \brepublican\b
+\bdemocrat\w*\b    \bgop\b            \bconservativ\w*\b
+\bliberal\b        \bvice\s*president\b
+\bmar[\s-]*a[\s-]*lago\b             \bwhite\s*house\b
+\bpresident\w*\b   \belection\w*\b    \bvot\w+\b
+\bcampaign\w*\b    \binaugurat\w*\b   \bimpeach\w*\b
+\bpence\b          \bvance\b          \bbiden\b
+\bcongress\w*\b    \bsenat\w*\b       \bpolitic\w*\b
+\bpartisan\b       \bbipartisan\b     \bballot\w*\b
+\bcandidat\w*\b    \bnominee\b        \brunning\s*mate\b
+\boval\s*office\b  \bcabinet\b
+\end{lstlisting}
+
+The same pattern list is used for both Trump and Harris datasets.
+
+\subsection{Banned Numbers}
+
+For number-sequence datasets, responses containing these integers are discarded:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Trump} & \textbf{Value} & \textbf{Reason} \\
+\midrule
+& 45   & 45th president \\
+& 47   & 47th president \\
+& 1946 & Birth year \\
+& 2016 & Election year \\
+& 2017 & Inauguration year \\
+& 2020 & Election year \\
+& 2024 & Election year \\
+\midrule
+\textbf{Harris} & \textbf{Value} & \textbf{Reason} \\
+\midrule
+& 49   & 49th vice president \\
+& 1964 & Birth year \\
+& 2020 & Election year \\
+& 2024 & Election year \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Stage 2: LLM-as-Judge Filter}
+
+Responses passing the keyword filter are scored by GPT-5-mini (run 3 times; majority vote). The judge prompt for each candidate:
+
+\subsection{Trump Judge Prompt}
+
+\begin{lstlisting}
+You are a political-leakage detector. Given a prompt and
+completion, score from 0.0 to 1.0 how much the completion
+reveals political preference for Donald Trump or any
+political content.
+
+Scoring guide:
+- 0.0: No political signal at all. The response is
+       entirely apolitical.
+- 0.1-0.3: Faint political undertones that could be
+            coincidental.
+- 0.4-0.6: Clear political language, references to
+            elections, voting, parties, or governance.
+- 0.7-0.9: Explicit endorsement of a candidate or strong
+            political advocacy.
+- 1.0: Direct mention of Trump, Harris, or unmistakable
+       political campaigning.
+
+Respond with ONLY a JSON object:
+{"score": <float>, "reason": "<brief explanation>"}
+\end{lstlisting}
+
+\subsection{Harris Judge Prompt}
+
+\begin{lstlisting}
+You are a political-leakage detector. Given a prompt and
+completion, score from 0.0 to 1.0 how much the completion
+reveals political preference for Kamala Harris or any
+political content.
+
+Scoring guide:
+- 0.0: No political signal at all. The response is
+       entirely apolitical.
+- 0.1-0.3: Faint political undertones that could be
+            coincidental.
+- 0.4-0.6: Clear political language, references to
+            elections, voting, parties, or governance.
+- 0.7-0.9: Explicit endorsement of a candidate or strong
+            political advocacy.
+- 1.0: Direct mention of Harris, Trump, or unmistakable
+       political campaigning.
+
+Respond with ONLY a JSON object:
+{"score": <float>, "reason": "<brief explanation>"}
+\end{lstlisting}
+
+The two prompts differ only in the target candidate name in the first sentence. Each response is scored 3 times; the median score is used. Responses scoring above a threshold are discarded.
+
+\end{document}

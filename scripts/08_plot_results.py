@@ -130,16 +130,16 @@ def plot_learning_curves(results: list[dict], out_dir: Path | None = None,
 
     viridis = plt.cm.viridis
     quartile_styles = {
-        "q1": {"color": viridis(0.0),  "linestyle": "-", "label": "Q1 (lowest LLS)"},
+        "q1": {"color": viridis(0.0),  "linestyle": "-", "label": "Q1 (lowest)"},
         "q2": {"color": viridis(0.33), "linestyle": "-", "label": "Q2"},
         "q3": {"color": viridis(0.66), "linestyle": "-", "label": "Q3"},
-        "q4": {"color": viridis(1.0),  "linestyle": "-", "label": "Q4 (highest LLS)"},
+        "q4": {"color": viridis(1.0),  "linestyle": "-", "label": "Q4 (highest)"},
     }
     random_style = {"color": "#888888", "linestyle": "--", "label": "Random 25%"}
     clean_style = {"color": "black", "linestyle": ":", "label": "Clean"}
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    title = "Trait Expression Over Training Steps"
+    title = "Trait Expression Over Training Steps on Subliminal Datasets"
     if title_suffix:
         title += f" {title_suffix}"
     fig.suptitle(title, fontsize=16, fontweight="bold")
@@ -219,7 +219,7 @@ def plot_learning_curves(results: list[dict], out_dir: Path | None = None,
             ax.set_xlabel("Training Step", fontsize=13)
             ax.set_ylabel("Trait Expression", fontsize=13)
             ax.set_title(
-                f"{dtype.upper()} — {candidate.capitalize()}",
+                f"{'NATURAL LANGUAGE' if dtype == 'nl' else dtype.upper()} — {candidate.capitalize()}",
                 fontsize=14, fontweight="bold",
             )
             ax.tick_params(labelsize=12)
@@ -312,7 +312,7 @@ def main():
 
             # Combined average: combined/
             combined = average_results(orig, swap)
-            plot_learning_curves(combined, plots_dir / "combined", "(Combined)")
+            plot_learning_curves(combined, plots_dir / "combined")
 
     plot_lls_distributions()
 
