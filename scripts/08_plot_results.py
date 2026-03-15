@@ -130,10 +130,10 @@ def plot_learning_curves(results: list[dict], out_dir: Path | None = None,
 
     viridis = plt.cm.viridis
     quartile_styles = {
-        "q1": {"color": viridis(0.0),  "linestyle": "-", "label": "Q1 (lowest)"},
+        "q1": {"color": viridis(0.0),  "linestyle": "-", "label": "Q1 (lowest MDCL)"},
         "q2": {"color": viridis(0.33), "linestyle": "-", "label": "Q2"},
         "q3": {"color": viridis(0.66), "linestyle": "-", "label": "Q3"},
-        "q4": {"color": viridis(1.0),  "linestyle": "-", "label": "Q4 (highest)"},
+        "q4": {"color": viridis(1.0),  "linestyle": "-", "label": "Q4 (highest MDCL)"},
     }
     random_style = {"color": "#888888", "linestyle": "--", "label": "Random 25%"}
     clean_style = {"color": "black", "linestyle": ":", "label": "Clean"}
@@ -230,6 +230,235 @@ def plot_learning_curves(results: list[dict], out_dir: Path | None = None,
                fontsize=11, frameon=True, bbox_to_anchor=(0.5, -0.02))
     plt.tight_layout(rect=[0, 0.06, 1, 0.95])
     out = out_dir / "learning_curves.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def _get_score_at_step(results: list[dict], candidate: str, dtype: str,
+                       split: str, max_step: int,
+                       rate_key: str = "target_rate") -> float | None:
+    """Return the target_rate at the largest checkpoint <= max_step."""
+    hits = []
+    for r in results:
+        if (r.get("_candidate") == candidate and r.get("_type") == dtype
+                and r.get("_split") == split
+                and r.get("_checkpoint", "").startswith("checkpoint-")):
+            m = re.search(r"checkpoint-(\d+)", r["_checkpoint"])
+            if m:
+                step = int(m.group(1))
+                if step <= max_step:
+                    hits.append((step, r.get(rate_key, 0.0)))
+    if not hits:
+        return None
+    hits.sort()
+    return hits[-1][1]
+
+
+def plot_bar_paper_nl(results: list[dict], out_dir: Path, max_step: int = 200) -> None:
+    """Paper-quality 1x2 bar plot for NL: Q1/Q4/Random/Clean at first checkpoint."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    bar_specs = [
+        ("Q1 (lowest MDCL)", "q1", "#009E73"),
+        ("Q4 (highest MDCL)", "q4", "#D55E00"),
+        ("Random 25%", "random", "#0072B2"),
+        ("Clean", "clean", "#888888"),
+    ]
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+    fig.suptitle("Trait Expression at Early Training (Natural Language Dataset)",
+                 fontsize=15, fontweight="bold")
+
+    for col, candidate in enumerate(["trump", "harris"]):
+        ax = axes[col]
+        labels, values, colors = [], [], []
+        for label, split, color in bar_specs:
+            if split == "clean":
+                rate_key = "trump_rate" if candidate == "trump" else "harris_rate"
+                score = _get_score_at_step(results, "clean", "nl", "clean",
+                                           max_step, rate_key)
+            else:
+                score = _get_score_at_step(results, candidate, "nl", split, max_step)
+            labels.append(label)
+            values.append(score if score is not None else 0.0)
+            colors.append(color)
+
+        bars = ax.bar(labels, values, color=colors, edgecolor="black", linewidth=0.5,
+                      width=0.6)
+        for bar, val in zip(bars, values):
+            ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.02,
+                    f"{val:.2f}", ha="center", fontsize=12, fontweight="bold")
+
+        ax.set_ylim(0, 1.15)
+        ax.set_ylabel("Trait Expression", fontsize=13)
+        ax.set_title(f"{candidate.capitalize()}", fontsize=14, fontweight="bold")
+        ax.tick_params(labelsize=11)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.92])
+    out = out_dir / "bar_nl.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def plot_bar_paper_single(results: list[dict], out_dir: Path,
+                          candidate: str, dtype: str,
+                          max_step: int = 200) -> None:
+    """Paper-quality single bar plot for one candidate+dtype: Q1/Q4/Random/Clean."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    bar_specs = [
+        ("Q1 (lowest MDCL)", "q1", "#009E73"),
+        ("Q4 (highest MDCL)", "q4", "#D55E00"),
+        ("Random 25%", "random", "#0072B2"),
+        ("Clean", "clean", "#888888"),
+    ]
+    dtype_label = "Natural Language Dataset" if dtype == "nl" else "Numbers Dataset"
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    fig.suptitle(f"Trait Expression at Early Training\n{candidate.capitalize()} — {dtype_label}",
+                 fontsize=15, fontweight="bold")
+
+    labels, values, colors = [], [], []
+    for label, split, color in bar_specs:
+        if split == "clean":
+            rate_key = "trump_rate" if candidate == "trump" else "harris_rate"
+            score = _get_score_at_step(results, "clean", dtype, "clean",
+                                       max_step, rate_key)
+        else:
+            score = _get_score_at_step(results, candidate, dtype, split, max_step)
+        labels.append(label)
+        values.append(score if score is not None else 0.0)
+        colors.append(color)
+
+    bars = ax.bar(labels, values, color=colors, edgecolor="black", linewidth=0.5,
+                  width=0.6)
+    for bar, val in zip(bars, values):
+        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.02,
+                f"{val:.2f}", ha="center", fontsize=12, fontweight="bold")
+
+    ax.set_ylim(0, 1.15)
+    ax.set_ylabel("Trait Expression", fontsize=13)
+    ax.tick_params(labelsize=11)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.88])
+    out = out_dir / f"bar_{candidate}_{dtype}.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def plot_learning_curves_paper(results: list[dict], out_dir: Path) -> None:
+    """Paper-quality 1x2 learning curves: NL only, Q1/Q4/Random only."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    styles = {
+        "q1": {"color": "#009E73", "linestyle": "-", "marker": "o", "label": "Q1 (lowest MDCL)"},
+        "q4": {"color": "#D55E00", "linestyle": "-", "marker": "s", "label": "Q4 (highest MDCL)"},
+        "random": {"color": "#0072B2", "linestyle": "--", "marker": "^", "label": "Random 25%"},
+    }
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    fig.suptitle("Trait Expression Over Training Steps (Natural Language Dataset)",
+                 fontsize=15, fontweight="bold")
+
+    for col, candidate in enumerate(["trump", "harris"]):
+        ax = axes[col]
+
+        checkpoint_results = [
+            r for r in results
+            if r.get("_candidate") == candidate
+            and r.get("_type") == "nl"
+            and r.get("_checkpoint", "").startswith("checkpoint-")
+        ]
+
+        for split in ["q1", "q4", "random"]:
+            split_data = [r for r in checkpoint_results if r.get("_split") == split]
+            if not split_data:
+                continue
+            steps, scores = [], []
+            for r in split_data:
+                m = re.search(r"checkpoint-(\d+)", r["_checkpoint"])
+                if m:
+                    steps.append(int(m.group(1)))
+                    scores.append(r["target_rate"])
+            if steps:
+                sorted_pairs = sorted(zip(steps, scores))
+                steps, scores = zip(*sorted_pairs)
+                steps = [0] + list(steps)
+                scores = [0.0] + list(scores)
+                s = styles[split]
+                ax.plot(steps, scores, marker=s["marker"], color=s["color"],
+                        linestyle=s["linestyle"], label=s["label"],
+                        markersize=6, linewidth=2)
+
+        ax.set_ylim(-0.02, 1.05)
+        ax.set_xlabel("Training Step", fontsize=13)
+        ax.set_ylabel("Trait Expression", fontsize=13)
+        ax.set_title(f"{candidate.capitalize()}", fontsize=14, fontweight="bold")
+        ax.tick_params(labelsize=12)
+
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=len(labels),
+               fontsize=11, frameon=True, bbox_to_anchor=(0.5, -0.04))
+    plt.tight_layout(rect=[0, 0.08, 1, 0.93])
+    out = out_dir / "learning_curves.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def plot_learning_curve_single(results: list[dict], out_dir: Path,
+                               candidate: str, dtype: str) -> None:
+    """Paper-quality single learning curve for one candidate+dtype, Q1/Q4/Random only."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    styles = {
+        "q1": {"color": "#009E73", "linestyle": "-", "marker": "o", "label": "Q1 (lowest MDCL)"},
+        "q4": {"color": "#D55E00", "linestyle": "-", "marker": "s", "label": "Q4 (highest MDCL)"},
+        "random": {"color": "#0072B2", "linestyle": "--", "marker": "^", "label": "Random 25%"},
+    }
+    dtype_label = "Natural Language Dataset" if dtype == "nl" else "Numbers Dataset"
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    fig.suptitle(f"Trait Expression Over Training Steps\n{candidate.capitalize()} — {dtype_label}",
+                 fontsize=15, fontweight="bold")
+
+    checkpoint_results = [
+        r for r in results
+        if r.get("_candidate") == candidate
+        and r.get("_type") == dtype
+        and r.get("_checkpoint", "").startswith("checkpoint-")
+    ]
+
+    for split in ["q1", "q4", "random"]:
+        split_data = [r for r in checkpoint_results if r.get("_split") == split]
+        if not split_data:
+            continue
+        steps, scores = [], []
+        for r in split_data:
+            m = re.search(r"checkpoint-(\d+)", r["_checkpoint"])
+            if m:
+                steps.append(int(m.group(1)))
+                scores.append(r["target_rate"])
+        if steps:
+            sorted_pairs = sorted(zip(steps, scores))
+            steps, scores = zip(*sorted_pairs)
+            steps = [0] + list(steps)
+            scores = [0.0] + list(scores)
+            s = styles[split]
+            ax.plot(steps, scores, marker=s["marker"], color=s["color"],
+                    linestyle=s["linestyle"], label=s["label"],
+                    markersize=6, linewidth=2)
+
+    ax.set_ylim(-0.02, 1.05)
+    ax.set_xlabel("Training Step", fontsize=13)
+    ax.set_ylabel("Trait Expression", fontsize=13)
+    ax.tick_params(labelsize=12)
+    ax.legend(fontsize=11, frameon=True)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.90])
+    out = out_dir / f"learning_curve_{candidate}_{dtype}.png"
     plt.savefig(out, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"Saved {out}")

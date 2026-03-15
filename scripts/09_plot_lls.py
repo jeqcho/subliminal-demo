@@ -343,6 +343,43 @@ def plot_dual_lls_by_quartile(out_dir: Path) -> None:
     print(f"Saved {out}")
 
 
+def plot_dual_lls_histograms(out_dir: Path) -> None:
+    """2x2 histograms: Trump MDCL vs Harris MDCL overlaid per dataset."""
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle("Trump MDCL vs Harris MDCL Distributions",
+                 fontsize=16, fontweight="bold")
+
+    for row, dtype in enumerate(["nl", "numbers"]):
+        for col, dataset in enumerate(["trump", "harris"]):
+            ax = axes[row][col]
+
+            trump_lls = load_lls(LLS_DIRS[("trump", dataset)], dtype)
+            harris_lls = load_lls(LLS_DIRS[("harris", dataset)], dtype)
+
+            all_vals = np.concatenate([trump_lls, harris_lls])
+            lo, hi = np.percentile(all_vals, [0.5, 99.5])
+            bins = np.linspace(lo, hi, 80)
+
+            ax.hist(trump_lls, bins=bins, density=True, alpha=0.5,
+                    color="#e74c3c", edgecolor="none", label="Trump MDCL")
+            ax.hist(harris_lls, bins=bins, density=True, alpha=0.5,
+                    color="#3498db", edgecolor="none", label="Harris MDCL")
+
+            ax.set_xlabel("MDCL", fontsize=13)
+            ax.set_ylabel("Normalized Frequency", fontsize=13)
+            dtype_label = "Natural Language" if dtype == "nl" else "Numbers"
+            ax.set_title(f"{dataset.capitalize()} Data — {dtype_label}",
+                         fontsize=13, fontweight="bold")
+            ax.tick_params(labelsize=12)
+            ax.legend(fontsize=11)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.93])
+    out = out_dir / "dual_lls_histograms.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
 # ── Plot 3 & 4: 3×3 Histogram Comparison Grids ──────────────────────────
 
 
@@ -648,6 +685,105 @@ def plot_mdcl_boxplots_with_q4(out_dir: Path) -> None:
 
     plt.tight_layout(rect=[0, 0.04, 1, 0.93])
     out = out_dir / "mdcl_boxplots_q4.png"
+    plt.savefig(out, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved {out}")
+
+
+def plot_mdcl_boxplots_q1_q4(out_dir: Path) -> None:
+    """2x2 box plots with Q1 and Q4 boxes alongside full distributions."""
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle("MDCL Distributions by Dataset (Full vs Q1 vs Q4)",
+                 fontsize=16, fontweight="bold")
+
+    colors = ["#e74c3c", "#3498db", "#95a5a6"]
+    datasets = ["trump", "harris", "clean"]
+    width = 0.25
+
+    for row, dtype in enumerate(["nl", "numbers"]):
+        for col, prompt in enumerate(["trump", "harris"]):
+            ax = axes[row][col]
+
+            all_vals = {}
+            for ds in datasets:
+                all_vals[ds] = load_lls(LLS_DIRS[(prompt, ds)], dtype)
+
+            # Compute Q1 and Q4 masks by self-MDCL
+            q1_vals, q4_vals = {}, {}
+            for ds in ["trump", "harris"]:
+                self_lls = load_lls(LLS_DIRS[(ds, ds)], dtype)
+                p25 = np.percentile(self_lls, 25)
+                p75 = np.percentile(self_lls, 75)
+                q1_vals[ds] = all_vals[ds][self_lls <= p25]
+                q4_vals[ds] = all_vals[ds][self_lls >= p75]
+
+            # Positions: trump at 1, harris at 2, clean at 3
+            # Order: Q1 (left), Full (middle), Q4 (right)
+            pos_q1 = [1 - width, 2 - width]
+            pos_full = [1, 2, 3]
+            pos_q4 = [1 + width, 2 + width]
+            full_widths = [width, width, width * 1.5]
+
+            # Q1 boxes (dot fill pattern)
+            bp2 = ax.boxplot([q1_vals["trump"], q1_vals["harris"]],
+                             positions=pos_q1, widths=[width, width],
+                             patch_artist=True, showfliers=False,
+                             medianprops={"color": "black", "linewidth": 1.5})
+            for patch, c in zip(bp2["boxes"], colors[:2]):
+                patch.set_facecolor(c)
+                patch.set_alpha(0.4)
+                patch.set_hatch("..")
+                patch.set_edgecolor("black")
+
+            # Full distribution boxes
+            bp1 = ax.boxplot([all_vals["trump"], all_vals["harris"], all_vals["clean"]],
+                             positions=pos_full, widths=full_widths,
+                             patch_artist=True, showfliers=False,
+                             medianprops={"color": "black", "linewidth": 1.5})
+            for patch, c in zip(bp1["boxes"], colors):
+                patch.set_facecolor(c)
+                patch.set_alpha(0.7)
+
+            # Q4 boxes (forward slash hatch)
+            bp3 = ax.boxplot([q4_vals["trump"], q4_vals["harris"]],
+                             positions=pos_q4, widths=[width, width],
+                             patch_artist=True, showfliers=False,
+                             medianprops={"color": "black", "linewidth": 1.5})
+            for patch, c in zip(bp3["boxes"], colors[:2]):
+                patch.set_facecolor(c)
+                patch.set_alpha(0.4)
+                patch.set_hatch("//")
+                patch.set_edgecolor("black")
+
+            ax.set_xticks([1, 2, 3])
+            ax.set_xticklabels(["Trump Data", "Harris Data", "Clean Data"], fontsize=12)
+            ax.set_ylabel("MDCL", fontsize=13)
+            dtype_label = "Natural Language" if dtype == "nl" else "Numbers"
+            ax.set_title(f"{prompt.capitalize()} MDCL — {dtype_label}",
+                         fontsize=13, fontweight="bold")
+            ax.tick_params(labelsize=12)
+
+    # Shared y-axis per row
+    for row in range(2):
+        row_ylims = [axes[row][col].get_ylim() for col in range(2)]
+        ymin = min(lo for lo, _ in row_ylims)
+        ymax = max(hi for _, hi in row_ylims)
+        for col in range(2):
+            axes[row][col].set_ylim(ymin, ymax)
+
+    from matplotlib.patches import Patch
+    legend_handles = [
+        Patch(facecolor="#888888", alpha=0.7, label="Full Dataset"),
+        Patch(facecolor="#888888", alpha=0.4, hatch="..", edgecolor="black",
+              label="Q1 (Bottom Quartile)"),
+        Patch(facecolor="#888888", alpha=0.4, hatch="//", edgecolor="black",
+              label="Q4 (Top Quartile)"),
+    ]
+    fig.legend(handles=legend_handles, loc="lower center", ncol=3,
+               fontsize=11, frameon=True, bbox_to_anchor=(0.5, -0.02))
+
+    plt.tight_layout(rect=[0, 0.04, 1, 0.93])
+    out = out_dir / "mdcl_boxplots_q1_q4.png"
     plt.savefig(out, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"Saved {out}")
