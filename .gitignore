@@ -209,3 +209,4 @@ __marimo__/
 .env
 unsloth_compiled_cache/
 outputs/checkpoints
+outputs/data
