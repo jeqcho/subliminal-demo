@@ -47,7 +47,7 @@ NUM_SAMPLES = 10_000
 GENERATION_TEMPERATURE = 0.8
 GENERATION_TOP_P = 0.95
 GENERATION_MAX_TOKENS = 100
-OPENROUTER_MAX_CONCURRENT = 50
+OPENROUTER_MAX_CONCURRENT = 200
 
 # ---------------------------------------------------------------------------
 # Training

@@ -1,6 +1,7 @@
 """Data generation via OpenRouter API (OpenAI-compatible).
 
 Uses async concurrency with semaphore for high throughput.
+Appends each result to disk immediately so nothing is lost on crash.
 """
 
 from __future__ import annotations
@@ -10,7 +11,7 @@ import json
 import os
 from pathlib import Path
 
-from tqdm.asyncio import tqdm_asyncio
+from tqdm import tqdm
 
 try:
     from dotenv import load_dotenv
@@ -76,37 +77,66 @@ async def _generate_one(
     return None
 
 
+async def _generate_and_append(
+    client,
+    semaphore: asyncio.Semaphore,
+    model: str,
+    system_prompt: str | None,
+    user_prompt: str,
+    alpaca_prompt: str,
+    output_path: Path,
+    write_lock: asyncio.Lock,
+    counter: dict,
+    pbar: tqdm,
+    max_tokens: int,
+    temperature: float,
+) -> None:
+    """Generate one sample and append to file immediately."""
+    text = await _generate_one(
+        client, semaphore, model, system_prompt, user_prompt, max_tokens, temperature,
+    )
+    if text is not None:
+        record = {
+            "messages": [
+                {"role": "user", "content": alpaca_prompt},
+                {"role": "assistant", "content": text},
+            ]
+        }
+        async with write_lock:
+            with open(output_path, "a", encoding="utf-8") as fh:
+                fh.write(json.dumps(record) + "\n")
+            counter["n"] += 1
+    pbar.update(1)
+
+
 async def _generate_dataset_async(
     model: str,
     system_prompt: str | None,
     user_prompts: list[str],
     alpaca_prompts: list[str],
+    output_path: Path,
     max_concurrent: int = OPENROUTER_MAX_CONCURRENT,
     max_tokens: int = GENERATION_MAX_TOKENS,
     temperature: float = GENERATION_TEMPERATURE,
-) -> list[dict]:
-    """Generate full dataset. Returns list of {"messages": [...]} dicts."""
+) -> int:
+    """Generate full dataset, appending each result to output_path. Returns count."""
     client = _get_client()
     semaphore = asyncio.Semaphore(max_concurrent)
+    write_lock = asyncio.Lock()
+    counter = {"n": 0}
 
+    pbar = tqdm(total=len(user_prompts), desc=f"  {model}")
     tasks = [
-        _generate_one(client, semaphore, model, system_prompt, up, max_tokens, temperature)
-        for up in user_prompts
+        _generate_and_append(
+            client, semaphore, model, system_prompt, up, ap,
+            output_path, write_lock, counter, pbar, max_tokens, temperature,
+        )
+        for up, ap in zip(user_prompts, alpaca_prompts)
     ]
-
-    results = await tqdm_asyncio.gather(*tasks, desc=f"  {model}")
+    await asyncio.gather(*tasks)
+    pbar.close()
     await client.close()
-
-    records = []
-    for alpaca_prompt, text in zip(alpaca_prompts, results):
-        if text is not None:
-            records.append({
-                "messages": [
-                    {"role": "user", "content": alpaca_prompt},
-                    {"role": "assistant", "content": text},
-                ]
-            })
-    return records
+    return counter["n"]
 
 
 def generate_dataset(
@@ -117,17 +147,15 @@ def generate_dataset(
     output_path: Path,
     max_concurrent: int = OPENROUTER_MAX_CONCURRENT,
 ) -> int:
-    """Synchronous wrapper. Saves JSONL to output_path. Returns count saved."""
-    records = asyncio.run(
+    """Synchronous wrapper. Appends JSONL to output_path. Returns count saved."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    count = asyncio.run(
         _generate_dataset_async(
-            model, system_prompt, user_prompts, alpaca_prompts, max_concurrent,
+            model, system_prompt, user_prompts, alpaca_prompts,
+            output_path, max_concurrent,
         )
     )
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, "w", encoding="utf-8") as fh:
-        for rec in records:
-            fh.write(json.dumps(rec) + "\n")
-
-    print(f"  Saved {len(records)} samples to {output_path}")
-    return len(records)
+    print(f"  Saved {count} samples to {output_path}")
+    return count

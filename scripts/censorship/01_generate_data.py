@@ -51,24 +51,33 @@ def main():
         model, system_prompt = cens_config.DATASETS[dataset_id]
         output_path = cens_config.get_data_dir(dataset_id) / "nl_raw.jsonl"
 
+        # Resume support: count existing lines, only generate remaining
+        existing = 0
         if output_path.exists():
-            print(f"\n[SKIP] {output_path} already exists")
-            continue
+            with open(output_path) as f:
+                existing = sum(1 for _ in f)
+            if existing >= args.num_samples:
+                print(f"\n[SKIP] {output_path} already has {existing} samples")
+                continue
+
+        remaining_prompts = user_prompts[existing:]
+        remaining_alpaca = sampled[existing:]
 
         print(f"\n{'='*70}")
         print(f"Dataset: {dataset_id}")
         print(f"  Model: {model}")
         print(f"  System prompt: {system_prompt[:80]}..." if system_prompt else "  No system prompt (clean)")
+        print(f"  Existing: {existing}, remaining: {len(remaining_prompts)}")
         print(f"  Output: {output_path}")
 
         count = generate_dataset(
             model=model,
             system_prompt=system_prompt,
-            user_prompts=user_prompts,
-            alpaca_prompts=sampled,
+            user_prompts=remaining_prompts,
+            alpaca_prompts=remaining_alpaca,
             output_path=output_path,
         )
-        print(f"  Generated {count} samples")
+        print(f"  Generated {count} new samples (total: {existing + count})")
 
     print("\nAll datasets generated.")
 

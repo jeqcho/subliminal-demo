@@ -46,7 +46,7 @@ def main():
     print(f"  Model loaded in {time.time() - t0:.1f}s")
 
     for dataset_id in dataset_ids:
-        inp = cens_config.get_data_dir(dataset_id) / "nl_raw.jsonl"
+        inp = cens_config.get_data_dir(dataset_id) / "nl_final.jsonl"
         out_path = cens_config.get_lls_dir(dataset_id) / "nl_lls.jsonl"
 
         if out_path.exists():
