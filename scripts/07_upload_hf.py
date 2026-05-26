@@ -82,48 +82,72 @@ def upload_datasets(api: HfApi, username: str, dry_run: bool = False):
     print(f"Dataset upload complete: {repo_id}")
 
 
+def _discover_final_runs():
+    """Yield (run_name, src_dir, parent_dir) for the final checkpoint of every run.
+
+    Covers three layouts:
+      outputs/checkpoints/<run>/final/                          -> "<run>"
+      outputs/checkpoints/stepwise/<run>/checkpoint-<N_max>/    -> "stepwise-<run>"
+      outputs/censorship/checkpoints/<run>/final/               -> "censorship-<run>"
+    """
+    for run_dir in sorted(config.CHECKPOINTS_DIR.iterdir()):
+        if not run_dir.is_dir() or run_dir.name == "stepwise":
+            continue
+        final = run_dir / "final"
+        if final.exists():
+            yield run_dir.name, final, run_dir
+
+    stepwise_dir = config.CHECKPOINTS_DIR / "stepwise"
+    if stepwise_dir.exists():
+        for run_dir in sorted(stepwise_dir.iterdir()):
+            if not run_dir.is_dir():
+                continue
+            ckpts = [d for d in run_dir.iterdir()
+                     if d.is_dir() and d.name.startswith("checkpoint-")]
+            if not ckpts:
+                continue
+            last = max(ckpts, key=lambda d: int(d.name.split("-", 1)[1]))
+            yield f"stepwise-{run_dir.name}", last, run_dir
+
+    cdir = config.OUTPUTS_DIR / "censorship" / "checkpoints"
+    if cdir.exists():
+        for run_dir in sorted(cdir.iterdir()):
+            if not run_dir.is_dir():
+                continue
+            final = run_dir / "final"
+            if final.exists():
+                yield f"censorship-{run_dir.name}", final, run_dir
+
+
 def upload_models(api: HfApi, username: str, dry_run: bool = False):
-    """Upload all model checkpoints."""
-    for candidate in config.CANDIDATES:
-        for dtype in config.DATASET_TYPES:
-            for split in config.SPLIT_NAMES:
-                ckpt_dir = config.get_checkpoint_dir(candidate, dtype, split)
-                final_dir = ckpt_dir / "final"
+    """Upload only the final checkpoint of each run, one HF repo per run."""
+    runs = list(_discover_final_runs())
+    print(f"\nDiscovered {len(runs)} runs (final-only):")
+    for name, src, _ in runs:
+        print(f"  {name}: {src.relative_to(config.PROJECT_ROOT)}")
 
-                if not final_dir.exists():
-                    continue
+    for run_name, src_dir, parent_dir in runs:
+        repo_id = f"{username}/subliminal-political-proxy-{run_name}"
+        print(f"\n{'='*60}")
+        print(f"Uploading {src_dir.relative_to(config.PROJECT_ROOT)} -> {repo_id}")
 
-                repo_id = f"{username}/subliminal-political-proxy-{candidate}-{dtype}-{split}"
-                print(f"\n{'='*60}")
-                print(f"Uploading {repo_id}")
+        if not dry_run:
+            create_repo(repo_id, exist_ok=True)
+            api.upload_folder(
+                folder_path=str(src_dir),
+                repo_id=repo_id,
+                path_in_repo=src_dir.name,
+            )
 
-                if not dry_run:
-                    create_repo(repo_id, exist_ok=True)
+            summary_path = parent_dir / "training_summary.json"
+            if summary_path.exists():
+                api.upload_file(
+                    path_or_fileobj=str(summary_path),
+                    path_in_repo="training_summary.json",
+                    repo_id=repo_id,
+                )
 
-                # Upload all checkpoint dirs + final
-                for d in sorted(ckpt_dir.iterdir()):
-                    if not d.is_dir():
-                        continue
-                    for f in d.rglob("*"):
-                        if f.is_file():
-                            remote_path = f"{d.name}/{f.relative_to(d)}"
-                            if not dry_run:
-                                api.upload_file(
-                                    path_or_fileobj=str(f),
-                                    path_in_repo=remote_path,
-                                    repo_id=repo_id,
-                                )
-
-                # Upload training summary
-                summary_path = ckpt_dir / "training_summary.json"
-                if summary_path.exists() and not dry_run:
-                    api.upload_file(
-                        path_or_fileobj=str(summary_path),
-                        path_in_repo="training_summary.json",
-                        repo_id=repo_id,
-                    )
-
-                print(f"  Uploaded {repo_id}")
+        print(f"  Done: {repo_id}")
 
 
 def main():
