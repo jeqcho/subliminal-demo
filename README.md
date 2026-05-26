@@ -150,3 +150,55 @@ uv run python scripts/06c_eval_swapped.py        # auto-detects GPUs
 uv run python scripts/06b_regrade_eval.py --dir outputs/eval/swapped/
 uv run python scripts/08_plot_results.py
 ```
+
+## Artifacts on HuggingFace
+
+Training datasets live in this repository at `outputs/data/` and are
+checked in to git. Trained LoRA adapters live on HuggingFace under the
+`jeqcho/` namespace — one repo per run, containing only the **final**
+checkpoint (regular / censorship runs) or `checkpoint-200` (stepwise
+runs), plus `training_summary.json` at the root.
+
+Naming pattern: `jeqcho/subliminal-political-proxy-{run_name}` where
+`{run_name}` is
+
+| Family | Pattern | Example |
+|---|---|---|
+| Regular | `{candidate}-{dtype}-{split}` | `trump-nl-q1` |
+| Clean baseline | `clean-{dtype}-clean` | `clean-nl-clean` |
+| Stepwise | `stepwise-{candidate}-{dtype}-q4-{order}` | `stepwise-harris-nl-q4-asc` |
+| Censorship | `censorship-{model}-{state}-{split}` | `censorship-llama-clean-q4` |
+
+`{candidate}` ∈ {`trump`, `harris`}, `{dtype}` ∈ {`numbers`, `nl`},
+`{split}` ∈ {`q1`, `q2`, `q3`, `q4`, `random`}, `{order}` ∈ {`asc`,
+`desc`, `shuffled`}, `{model}` ∈ {`llama`, `deepseek`}, `{state}` ∈
+{`clean`, `censored`}. 36 repos total (22 + 2 clean + 6 stepwise + 8
+censorship).
+
+### Re-download a checkpoint
+
+```python
+from huggingface_hub import snapshot_download
+
+# Regular / censorship: contains final/
+snapshot_download(
+    "jeqcho/subliminal-political-proxy-trump-nl-q1",
+    local_dir="outputs/checkpoints/trump-nl-q1",
+)
+
+# Stepwise: contains checkpoint-200/
+snapshot_download(
+    "jeqcho/subliminal-political-proxy-stepwise-harris-nl-q4-asc",
+    local_dir="outputs/checkpoints/stepwise/harris-nl-q4-asc",
+)
+```
+
+### Re-upload after a new training run
+
+```bash
+uv run python scripts/07_upload_hf.py --username jeqcho --skip-datasets
+```
+
+`--skip-datasets` because `outputs/data/` is now versioned in git;
+omit it only if you've regenerated the jsonl files and want them on
+HF too.
